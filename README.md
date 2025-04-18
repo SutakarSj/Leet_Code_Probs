@@ -1,2 +1,2 @@
 # Leet_Code_Probs
-Solving and exploring the Leet Code Probs
+The LeetCode problems I've solved are explored in "LeetCode Probs" and are available for anyone to use.
