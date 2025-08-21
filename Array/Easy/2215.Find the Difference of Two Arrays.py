@@ -1,12 +1,31 @@
-﻿class Solution:
-    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
-        ans=[[],[]] #[0,1]
-        n1=list(set(nums1))
-        n2=list(set(nums2))
-        for i in range(len(n1)):
-            if n1[i] not in n2:
-                ans[0].append(n1[i])
-        for j in range(len(n2)):
-            if n2[j] not in n1:
-                ans[1].append(n2[j])
-        return ans
+﻿def encrypt(txt):
+    binary=''.join(format(ord(char), '08b') for char in txt)
+    mp={'0':'\u200C', '1': '\u200D'}
+    
+    ans=[]
+    for i in binary:
+        ans.append(mp[i])
+    f=open("dummy.txt","w")
+    f.write(binary)
+    f.close()
+    
+    hidden_txt=''.join(mp[bit] for bit in binary)
+    return hidden_txt , ans
+
+def decrypt(hidden):
+    mp={'\u200C':'0', '\u200D':'1'}
+    binary=''.join(mp[char] for char in hidden if char in mp)
+    
+    return ''.join(chr(int(binary [i:i+8],2)) for i in range (0,len(binary),8))
+
+def main():
+    text=input("Enter plain text :")
+    
+    hidden,ans=encrypt(text)
+    print("\nhidden:", hidden,"it is hidden the cipher text is below\n","\nhidden_value",ans)
+    
+    decoded=decrypt(hidden)
+    print("\ndecoded:", decoded)
+
+if __name__=="__main__":
+    main()
