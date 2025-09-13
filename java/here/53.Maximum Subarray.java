@@ -1,16 +1,5 @@
 class Solution {
-    public int maxSubArray(int[] nums) {
-        //finding maximum subarray using kadane's algorithm method one 
-        /*int max=nums[0];
-        int cuz=0;
-        for (int n:nums){
-            cuz = Math.max(cuz,0);
-            cuz=cuz+n;
-            max = Math.max(cuz,max);
-        }
-        return max;
-    }*/
-    //method two 
+    public int maxSubArray(int[] nums) { 
         int max=Integer.MIN_VALUE;
         int cuz=0;
         int n=nums.length;
