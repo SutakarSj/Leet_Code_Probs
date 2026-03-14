@@ -1,0 +1,11 @@
+with a as (
+    select managerId
+    from Employee
+    group by managerId
+    having count(1)>4
+)
+
+select e.name from Employee e
+Inner join a 
+on 
+e.id = a.managerId;
